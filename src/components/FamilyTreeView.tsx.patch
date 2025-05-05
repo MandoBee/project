@@ -1,0 +1,28 @@
+--- src/components/FamilyTreeView.tsx
++++ src/components/FamilyTreeView.tsx
+@@ -1,10 +1,20 @@
++// Add this interface near the top of the file
++interface CustomFamilyNodeProps {
++  data: {
++    id: string;
++    gender: string;
++    name: string;
++    birthDate: string;
++    avatar?: string;
++  };
++  isRoot: boolean;
++}
++
+ // Updated FamilyNode component to include handles
+-const CustomFamilyNode = ({ data, isRoot }) => {
++const CustomFamilyNode: React.FC<CustomFamilyNodeProps> = ({ data, isRoot }) => {
+   return (
+     <div>
+       <FamilyNode data={data} isRoot={isRoot} />
+       <Handle type="source" position={Position.Bottom} id="bottom" />
+       <Handle type="target" position={Position.Top} id="top" />
+       <Handle type="source" position={Position.Right} id="right" />
+       <Handle type="target" position={Position.Left} id="left" />
+     </div>
+   );
+ };
